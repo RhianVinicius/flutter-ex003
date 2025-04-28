@@ -25,9 +25,7 @@ class HomePageState extends State<HomePage> {
           style: TextStyle(color: AppColors.white),
         ),
       ),
-      body: Center(
-        
-      )
+      body: Center(child: HomePageContent())
     );
   }
 }
