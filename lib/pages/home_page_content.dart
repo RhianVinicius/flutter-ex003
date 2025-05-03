@@ -25,10 +25,10 @@ class HomePageContentState extends State<HomePageContent> {
   String _convertColor(Color color) {
     switch (_currentFormat) {
       case ColorFormats.hex:
-        _currentFormatName = 'Hexadecimal';
+        _currentFormatName = 'Trocar para RBG';
         return _convertToHex(color);
       case ColorFormats.rgb:
-        _currentFormatName = 'RGB';
+        _currentFormatName = 'Trocar para Hexadecimal';
         return _converToRGB(color);
     }
   }
