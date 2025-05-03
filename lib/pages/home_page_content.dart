@@ -3,6 +3,8 @@ import 'package:flutter_ex001/stateful_widgets/app_slider.dart';
 import 'package:flutter_ex001/stateful_widgets/app_slider_label.dart';
 import 'package:flutter_ex001/theme/app_colors.dart';
 
+enum ColorFormats {hex, rgb}
+
 class HomePageContent extends StatefulWidget {
   const HomePageContent ({super.key});
 
@@ -17,8 +19,27 @@ class HomePageContentState extends State<HomePageContent> {
   double _redValue = 0;
   double _greenValue = 0;
   double _blueValue = 0;
+  ColorFormats _currentFormat = ColorFormats.hex;
+  String _currentFormatName = 'Hexadecimal';
 
-  Color _currentColor() {
+  String _convertColor(Color color) {
+    switch (_currentFormat) {
+      case ColorFormats.hex:
+        _currentFormatName = 'Hexadecimal';
+        return _convertToHex(color);
+      case ColorFormats.rgb:
+        _currentFormatName = 'RGB';
+        return _converToRGB(color);
+    }
+  }
+
+  void _updateCurrentFormat() {
+    setState(() {
+      _currentFormat = ColorFormats.values[(_currentFormat.index + 1) % ColorFormats.values.length];
+    });
+  }
+
+  Color _returnCurrentColor() {
     return Color.fromARGB(
       255,
       int.parse(_redValue.toStringAsFixed(0)),
@@ -35,8 +56,11 @@ class HomePageContentState extends State<HomePageContent> {
   }
 
   String _converToRGB(Color color) {
-    return 'rbg(${color.r * 255}, ${color.g * 255}, ${color.b * 255})';
-  } 
+    return 'rgb('
+      '${(color.r * 255).toStringAsFixed(0)}, '
+      '${(color.g * 255).toStringAsFixed(0)}, '
+      '${(color.b * 255).toStringAsFixed(0)})';
+  }
 
 
   void _updateRedValue(double newValue) {
@@ -78,15 +102,36 @@ class HomePageContentState extends State<HomePageContent> {
                       child: Container(
                         width: 230,
                         height: 230,
-                        color: _currentColor(),
+                        color: _returnCurrentColor(),
                       ),
                     )
                   ),
-                  Text(
-                    _convertToHex(_currentColor()),
-                    style: TextStyle(
-                      color: AppColors.black
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: Text(
+                          _convertColor(_returnCurrentColor()),
+                          
+                          style: TextStyle(
+                            color: AppColors.black
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: ElevatedButton(
+                          onPressed: _updateCurrentFormat,
+                          child: Text(_currentFormatName)
+                        ),
+                      )
+                    ],
                   )
                 ],
               )

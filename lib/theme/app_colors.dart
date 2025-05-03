@@ -13,9 +13,9 @@ class AppColors {
 
   static const shadow = Color(0x29000000);
 
-  static const green = Color.fromARGB(255, 0, 255, 0);
-  static const red = Color.fromARGB(255, 255, 0, 0);
-  static const blue = Color.fromARGB(255, 0, 0, 255);
+  static const green = Color(0xFF00FF00);
+  static const red = Color(0xFFFF0000);
+  static const blue = Color(0xFF0000FF);
 
   static const white = Color(0xFFFFFFFF);
   static const grey = Color(0xFF6B7774);
