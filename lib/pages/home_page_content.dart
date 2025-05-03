@@ -142,7 +142,7 @@ class HomePageContentState extends State<HomePageContent> {
                           ),
                           child: Container(
                             padding: EdgeInsets.all(2),
-                            child: Text(
+                            child: SelectableText(
                               _convertColor(_returnCurrentColor()),
                               style: TextStyle(
                                 color: AppColors.white,
