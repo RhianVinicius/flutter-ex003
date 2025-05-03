@@ -11,10 +11,11 @@ class AppColors {
 
   static const background =  Color(0xFFFFE6D5);
 
-  static const shadow = Color.fromARGB(64, 0, 0, 0);
+  static const shadow = Color(0x29000000);
 
-  static const green = Color(0xFF20B935);
-  static const red = Color(0xFFE01D1D);
+  static const green = Color.fromARGB(255, 0, 255, 0);
+  static const red = Color.fromARGB(255, 255, 0, 0);
+  static const blue = Color.fromARGB(255, 0, 0, 255);
 
   static const white = Color(0xFFFFFFFF);
   static const grey = Color(0xFF6B7774);

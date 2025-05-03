@@ -18,6 +18,27 @@ class HomePageContentState extends State<HomePageContent> {
   double _greenValue = 0;
   double _blueValue = 0;
 
+  Color _currentColor() {
+    return Color.fromARGB(
+      255,
+      int.parse(_redValue.toStringAsFixed(0)),
+      int.parse(_greenValue.toStringAsFixed(0)),
+      int.parse(_blueValue.toStringAsFixed(0))
+    );
+  }
+
+  String _convertToHex(Color color) {
+    return '#'
+      '${(color.r * 255).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}'
+      '${(color.g * 255).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}'
+      '${(color.b * 255).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}';
+  }
+
+  String _converToRGB(Color color) {
+    return 'rbg(${color.r * 255}, ${color.g * 255}, ${color.b * 255})';
+  } 
+
+
   void _updateRedValue(double newValue) {
     setState(() {
       _redValue = newValue;
@@ -57,11 +78,16 @@ class HomePageContentState extends State<HomePageContent> {
                       child: Container(
                         width: 230,
                         height: 230,
-                        color: AppColors.grey,
+                        color: _currentColor(),
                       ),
                     )
                   ),
-                  Text("Cor")
+                  Text(
+                    _convertToHex(_currentColor()),
+                    style: TextStyle(
+                      color: AppColors.black
+                    ),
+                  )
                 ],
               )
             ),
@@ -80,11 +106,11 @@ class HomePageContentState extends State<HomePageContent> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppSliderLabel(label: _redValue, color: AppColors.primary),
+                              AppSliderLabel(label: _redValue, color: AppColors.red),
                               AppSlider(
                                 value: _redValue,
                                 onChanged: _updateRedValue,
-                                color: AppColors.primary
+                                color: AppColors.red
                               )
                             ],
                           ),
@@ -95,11 +121,11 @@ class HomePageContentState extends State<HomePageContent> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppSliderLabel(label: _greenValue, color: AppColors.primary),
+                              AppSliderLabel(label: _greenValue, color: AppColors.green),
                               AppSlider(
                                 value: _greenValue,
                                 onChanged: _updateGreenValue,
-                                color: AppColors.primary
+                                color: AppColors.green
                               )
                             ],
                           ),
@@ -110,11 +136,11 @@ class HomePageContentState extends State<HomePageContent> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppSliderLabel(label: _blueValue, color: AppColors.primary),
+                              AppSliderLabel(label: _blueValue, color: AppColors.blue),
                               AppSlider(
                                 value: _blueValue,
                                 onChanged: _updateBlueValue,
-                                color: AppColors.primary
+                                color: AppColors.blue
                               )
                             ],
                           ),
