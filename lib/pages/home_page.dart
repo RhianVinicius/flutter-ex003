@@ -20,8 +20,10 @@ class HomePageState extends State<HomePage> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
+        elevation: 5,
+        shadowColor: AppColors.shadowDark,
         title: Text(
-          "App",
+          "Codificador de Cores",
           style: TextStyle(color: AppColors.white),
         ),
       ),
