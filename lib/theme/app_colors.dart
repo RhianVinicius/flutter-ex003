@@ -12,6 +12,7 @@ class AppColors {
   static const background =  Color(0xFFFFE6D5);
 
   static const shadow = Color(0x370E1312);
+  static const shadowDark = Color(0x680E1312);
 
   static const green = Color(0xFF00FF00);
   static const red = Color(0xFFFF0000);

@@ -111,12 +111,30 @@ class HomePageContentState extends State<HomePageContent> {
                     margin: EdgeInsets.only(bottom: 10),
                     width: 255,
                     height: 255,
-                    color: AppColors.white,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.shadow,
+                          blurRadius: 3,
+                          spreadRadius: 2
+                        )
+                      ]
+                    ),
                     child: Center(
                       child: Container(
                         width: 230,
                         height: 230,
-                        color: _returnCurrentColor(),
+                        decoration: BoxDecoration(
+                          color: _returnCurrentColor(),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.shadow,
+                              blurRadius: 1,
+                              spreadRadius: 0
+                            )
+                          ]
+                        ),
                       ),
                     )
                   ),
@@ -176,8 +194,7 @@ class HomePageContentState extends State<HomePageContent> {
                                 style: TextStyle(
                                   color: AppColors.white,
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                             )
