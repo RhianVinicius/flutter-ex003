@@ -39,6 +39,7 @@ class HomePageContentState extends State<HomePageContent> {
     });
   }
 
+
   Color _returnCurrentColor() {
     return Color.fromARGB(
       255,
@@ -89,14 +90,27 @@ class HomePageContentState extends State<HomePageContent> {
 
         return Column(
           children: [
-            Container(
-              height: panelHeight / 2,
-              margin: EdgeInsets.symmetric(vertical: 50),
+            SizedBox(
+              height: panelHeight / 1.4,
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 120,
+                    child: Center(
+                      child: Text(
+                        'Painel de Cores',
+                        style: TextStyle(
+                          color: AppColors.secondary,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w900
+                        )
+                      ),
+                    )
+                  ),
                   Container(
-                    width: 250,
-                    height: 250,
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: 255,
+                    height: 255,
                     color: AppColors.white,
                     child: Center(
                       child: Container(
@@ -106,32 +120,71 @@ class HomePageContentState extends State<HomePageContent> {
                       ),
                     )
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Text(
-                          _convertColor(_returnCurrentColor()),
-                          
-                          style: TextStyle(
-                            color: AppColors.black
+
+
+                  SizedBox(
+                    child: Column(
+
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: AppColors.secondary,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(0, 2),
+                                color: AppColors.shadow,
+                                blurRadius: 2,
+                              )
+                            ],
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            child: Text(
+                              _convertColor(_returnCurrentColor()),
+                              style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                
+                                                
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: ElevatedButton(
-                          onPressed: _updateCurrentFormat,
-                          child: Text(_currentFormatName)
-                        ),
-                      )
-                    ],
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ElevatedButton(
+                            onPressed: _updateCurrentFormat,
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.all(10),
+                              backgroundColor: AppColors.primaryDark,
+                              foregroundColor: AppColors.white,
+                              shadowColor: AppColors.black,
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                              )
+                              
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              child: Text(
+                                _currentFormatName,
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline
+                                ),
+                              ),
+                            )
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               )
